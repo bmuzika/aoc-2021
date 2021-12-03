@@ -24,12 +24,18 @@ pub fn split_by_newline(input: String) -> Vec<String> {
     result
 }
 
-pub fn string_into_vec_of_uint(input: String) -> Vec<u64> {
+pub fn string_into_vec_of_uint_radix(input: String, radix: u32) -> Vec<u64> {
     let result = input.split('\n')
                       .map(|s| s.to_string())
                       .filter(|s| s != "")
-                      .map(|s| s.parse::<u64>().unwrap())
+                      .map(|s| u64::from_str_radix(&s, radix).unwrap())
                       .collect::<Vec<u64>>();
+
+    result
+}
+
+pub fn string_into_vec_of_uint(input: String) -> Vec<u64> {
+    let result = string_into_vec_of_uint_radix(input, 10);
 
     result
 }
