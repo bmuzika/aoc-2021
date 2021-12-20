@@ -15,7 +15,7 @@ pub fn open_file_into_string(path: &str) -> String {
     file_contents
 }
 
-pub fn split_by_newline(input: String) -> Vec<String> {
+pub fn split_by_newline(input: &String) -> Vec<String> {
     let result = input.split('\n')
         .map(|s| s.to_string())
         .filter(|s| s != "")
